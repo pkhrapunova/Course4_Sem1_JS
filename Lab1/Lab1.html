@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Задание 1</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button, textarea { margin: 5px 0; padding: 5px; }
+    textarea {
+      width: 350px; 
+      height: 100px; 
+      resize: none; 
+    }
+  </style>
+  <script src="Lab1.js"></script>
+</head>
+<body>
+  <h2>Задание 1) Дан вещественный вектор А(n). Найти количество элементов этого вектора, больше среднего
+    арифметического всех его элементов. </h2>
+    <h2>Задание 2) Дан вещественный вектор A(n). Все элементы вектора предшествующие первому максимальному элементу 
+      разделить на 2, если элемент максимальный по величине встречается в векторе более чем один раз. В противном случае 
+      вектор оставить без изменения. На печать выдавать исходный вектор, максимальный элемент, индекс первого и их количество, 
+      преобразованный вектор.  </h2>
+  <p>Введите элементы вектора A(n) через пробел:</p>
+  <input type="text" id="vectorInput" placeholder="Например: 1.5 2 3.7 4.1 5">
+  <br>
+  <button onclick="task1()">Выполнить 1 задание</button>
+  <button onclick="task2()">Выполнить 2 задание</button>
+  <br>
+  <textarea id="output" readonly></textarea>
+</body>
+</html>
