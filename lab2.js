@@ -1,4 +1,3 @@
-// Создание таблицы для ввода матрицы
 function createMatrix(size) {
     var matrixDiv = document.getElementById('matrix');
     matrixDiv.innerHTML = '';
@@ -23,7 +22,6 @@ function createMatrix(size) {
     }
 }
 
-// Считывание матрицы из input'ов
 function getMatrix() {
     var size = parseInt(document.getElementById('matrixSize').value);
     var matrix = [];
@@ -31,14 +29,13 @@ function getMatrix() {
         var row = [];
         for (var j = 0; j < size; j++) {
             var val = parseInt(document.getElementById('matrixElement' + i + '_' + j).value);
-            row.push(isNaN(val) ? 0 : val); // если пусто — берём 0
+            row.push(isNaN(val) ? 0 : val); 
         }
         matrix.push(row);
     }
     return matrix;
 }
 
-// 1. Произведение элементов в тех столбцах, где нет элементов, кратных 2
 function task1() {
     var matrix = getMatrix();
     var size = matrix.length;
@@ -59,12 +56,10 @@ function task1() {
         results.length ? results.join("\n") : "Нет столбцов без чётных элементов";
 }
 
-// 2. Количество отрицательных элементов в строках, где есть хотя бы один ноль
 function task2() {
     var matrix = getMatrix();
     var size = matrix.length;
     var results = [];
-
     for (var row = 0; row < size; row++) {
         var hasZero = matrix[row].includes(0);
         if (hasZero) {
@@ -75,4 +70,5 @@ function task2() {
 
     document.getElementById("output").innerText =
         results.length ? results.join("\n") : "Нет строк с нулевыми элементами";
+
 }
