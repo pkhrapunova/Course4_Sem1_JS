@@ -1,0 +1,15 @@
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Введите текст: ", (text) => {
+  let words = text.split(/\s+/);
+  let maxLen = Math.max(...words.map(w => w.length));
+  let filtered = words.filter(w => w.length < maxLen);
+  let result = filtered.join(" ");
+  console.log("Новый текст:", result);
+  rl.close();
+});

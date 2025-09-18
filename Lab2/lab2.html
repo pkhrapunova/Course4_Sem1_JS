@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Обработка матрицы</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 20px;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 25px;
+      color: #0077cc;
+    }
+
+    .task {
+      margin: 20px 0;
+      padding: 15px 20px;
+      background: #eef6ff;
+      border-left: 6px solid #0077cc;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 3px;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    button {
+      margin: 8px 5px;
+      padding: 8px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #0077cc;
+      color: white;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #005fa3;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      background: #004b82;
+      transform: scale(0.98);
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-weight: bold;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      white-space: pre-line;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+  </style>
+  <script src="lab2.js"></script>
+</head>
+<body>
+
+<div class="task">
+  <p><b>Задача 1.</b> Определить произведение элементов в тех столбцах, которые не содержат элементов, кратных 2.</p>
+  <p><b>Задача 2.</b> Определить количество отрицательных элементов в тех строках, которые содержат хотя бы один нулевой элемент.</p>
+</div>
+
+<h3>Создание и обработка матрицы n × n</h3>
+
+<label>Размер матрицы: 
+  <input type="number" id="matrixSize" min="1">
+</label>
+<button onclick="createMatrix(document.getElementById('matrixSize').value)">Создать</button>
+
+<div id="matrix"></div>
+
+<button onclick="task1()">Задача 1</button>
+<button onclick="task2()">Задача 2</button>
+
+<div id="output" class="result"></div>
+
+</body>
+</html>
