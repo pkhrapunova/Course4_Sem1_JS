@@ -2,12 +2,6 @@
 //     * Пример правильного выражения: '((a + b) / 5-d)'.
 //     * Пример неправильного выражения:') (a + b))'.
 
-const readline = require("readline");
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
 function isBracketsBalanced(expression) {
     let stack = [];
@@ -22,13 +16,19 @@ function isBracketsBalanced(expression) {
     return stack.length === 0;
 }
 
-rl.question("Введите выражение для проверки скобок: ", (expr) => {
-    if (!expr.includes('(') && !expr.includes(')')) {
-        console.log("В выражении нет скобок для проверки.");
-    } else if (isBracketsBalanced(expr)) {
-        console.log("Скобки расставлены правильно.");
-    } else {
-        console.log("Скобки расставлены неправильно.");
+function processBrackets() {
+    let expr = jsConsole.read("#textInput").trim();
+
+    if (expr.length === 0) {
+        jsConsole.writeLine("Пусто!");
+        return;
     }
-    rl.close();
-});
+
+    if (!expr.includes('(') && !expr.includes(')')) {
+        jsConsole.writeLine("В выражении нет скобок для проверки.");
+    } else if (isBracketsBalanced(expr)) {
+        jsConsole.writeLine("Скобки расставлены правильно.");
+    } else {
+        jsConsole.writeLine("Скобки расставлены неправильно.");
+    }
+}

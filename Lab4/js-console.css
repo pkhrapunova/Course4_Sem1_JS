@@ -1,0 +1,86 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    color: white;
+    font-family: Consolas, monospace;
+    padding: 20px;
+}
+
+
+.menu {
+    margin-bottom: 15px;
+}
+
+.menu button {
+    background: #333;
+    color: white;
+    border: 1px solid gray;
+    padding: 5px 15px;
+    margin: 0 5px 5px 0; 
+    cursor: pointer;
+}
+
+.menu button:hover {
+    background: #444;
+    border-color: lime;
+}
+
+
+.console-container {
+    width: 800px; 
+}
+
+.js-console {
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    background-color: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 4px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.js-console > p {
+    margin: 0;
+}
+
+.input-area {
+    display: flex;
+    width: 100%;
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+
+.input-area input[type="text"] {
+    flex: 1; 
+    padding: 6px;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border: 1px solid gray;
+}
+
+.input-area input[type="text"]:focus {
+    outline: none;
+    border-color: lime;
+}
+
+.input-area button {
+    padding: 6px 12px;
+    background: #333;
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.input-area button:hover {
+    background: #444;
+    border-color: lime;
+}

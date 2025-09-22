@@ -1,20 +1,15 @@
 // 1. Написать JavaScript функцию,  которая переворачивает строку и возвращает ее.
 //     * Пример:" "sample"  "elpmas".
 
-const readline = require("readline");
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+function reverseString() {
+    let text = jsConsole.read("#textInput").trim();
+    if (text.length === 0) {
+        jsConsole.writeLine("Пусто!");
+        return;
+    }
+    let result = text.split('').reverse().join('');
+    jsConsole.writeLine("Перевернутая строка: " + result);
 
-function reverseString(str) {
-    return str.split('').reverse().join('');
 }
-
-rl.question("Введите строку для переворота: ", (input) => {
-    const reversed = reverseString(input);
-    console.log(`Перевернутая строка: ${reversed}`);
-    rl.close();
-});
 
