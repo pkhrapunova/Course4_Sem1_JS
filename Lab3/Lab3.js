@@ -1,31 +1,30 @@
-// 17.Дан текст. Создать новый текст путем вычеркивания из исходного текста слов максимальной длины.
-const readline = require("readline");
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-rl.question("Введите текст: ", (text) => {
-  text = text.trim();
+function processText() {
+  let text = jsConsole.read("#textInput").trim();
 
   if (text.length === 0) {
-    console.log("Пусто!");
-    rl.close();
+    jsConsole.writeLine("Пусто!");
     return;
   }
 
   let words = text.split(/\s+/);
-
-  let maxLen = Math.max(...words.map(w => w.length));//Делает массив как символы просто потому что max не воспринимает массивы
+  let maxLen = Math.max(...words.map(w => w.length));
   let filtered = words.filter(w => w.length < maxLen);
 
   if (filtered.length === 0) {
-    console.log("Все слова имеют одинаковую максимальную длину.");
+    jsConsole.writeLine("Все слова имеют одинаковую максимальную длину.");
   } else {
     let result = filtered.join(" ");
-    console.log("Новый текст:", result);
+    jsConsole.writeLine("Новый текст: " + result);
   }
+}
 
-  rl.close();
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("textInput");
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      processText(); 
+    }
+  });
 });

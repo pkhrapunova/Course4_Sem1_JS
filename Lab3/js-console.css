@@ -1,0 +1,55 @@
+﻿body {
+  margin: 0;
+  padding: 20px;
+  background-color: black;
+  font-family: Consolas, monospace;
+}
+
+.input-area {
+  margin-bottom: 15px;
+}
+
+.input-area input {
+  padding: 5px;
+  font-size: 16px;
+  background-color: #2b2727;
+  color: white;            
+}
+
+.input-area button {
+  padding: 6px 12px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.js-console {
+  padding: 10px;
+  background-color: black;
+  width: 800px;
+  height: 500px;
+  font-size: 18px;
+  color: #0f0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-break: break-word;
+  border: 2px solid #0f0;
+  border-radius: 4px;
+}
+
+body .js-console>p {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+}
+
+body .js-console>p>span {
+  margin: 0;
+  padding: 0;
+}
+
+body .js-console>p>br {
+  display: inline-block;
+  margin-bottom: 5px;
+}
