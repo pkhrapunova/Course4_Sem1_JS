@@ -21,8 +21,8 @@ function task2() {
     let arr1 = Array.from(input1);
     let arr2 = Array.from(input2);
     
-    jsConsole.writeLine("Первый массив: [" + arr1.join(', ') + "]");
-    jsConsole.writeLine("Второй массив: [" + arr2.join(', ') + "]");
+    // jsConsole.writeLine("Первый массив: [" + arr1.join(', ') + "]");
+    // jsConsole.writeLine("Второй массив: [" + arr2.join(', ') + "]");
     
     let result = "Массивы равны";
     
@@ -65,26 +65,33 @@ function task3() {
     
     jsConsole.writeLine("Входной массив: [" + arr.join(", ") + "]");
     
-    let maxSeq = [];
+    let maxLen = 1;
     let currentSeq = [arr[0]];
+    let results = [];
 
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] === arr[i - 1]) {
             currentSeq.push(arr[i]);
         } else {
-            if (currentSeq.length > maxSeq.length) {
-                maxSeq = currentSeq.slice();
+            if (currentSeq.length > maxLen) {
+                maxLen = currentSeq.length;
+                results = [currentSeq.slice()];
+            } else if (currentSeq.length === maxLen) {
+                results.push(currentSeq.slice());
             }
             currentSeq = [arr[i]];
         }
     }
-    
-    if (currentSeq.length > maxSeq.length) {
-        maxSeq = currentSeq;
+
+    if (currentSeq.length > maxLen) {
+        maxLen = currentSeq.length;
+        results = [currentSeq.slice()];
+    } else if (currentSeq.length === maxLen) {
+        results.push(currentSeq.slice());
     }
 
-    jsConsole.writeLine("Максимальная последовательность: [" + maxSeq.join(", ") + "]");
-    jsConsole.writeLine("Длина последовательности: " + maxSeq.length);
+    jsConsole.writeLine("Максимальные последовательности: " + 
+        results.map(seq => "[" + seq.join(", ") + "]").join(" , "));
 }
 
 function task4() {
@@ -107,20 +114,26 @@ function task4() {
     jsConsole.writeLine("Входной массив: [" + arr.join(", ") + "]");
     
     let freq = {};
-    let maxNum = arr[0];
-    let maxCount = 1;
+    let maxCount = 0;
 
     for (let num of arr) {
         freq[num] = (freq[num] || 0) + 1;
         if (freq[num] > maxCount) {
             maxCount = freq[num];
-            maxNum = num;
         }
     }
     
-    jsConsole.writeLine("Наиболее частое число: " + maxNum);
-    jsConsole.writeLine("Количество повторений: " + maxCount + " раз");
+    let mostFrequent = Object.keys(freq)
+        .filter(num => freq[num] === maxCount)
+        .map(num => `${num} (${freq[num]} раз)`);
+
+    if (mostFrequent.length === 1) {
+        jsConsole.writeLine("Наиболее частое число: " + mostFrequent[0]);
+    } else {
+        jsConsole.writeLine("Несколько чисел встречаются одинаково часто: " + mostFrequent.join(", "));
+    }
 }
+
 
 function loadTask(num) {
     if (!jsConsole) return;
@@ -141,24 +154,18 @@ function loadTask(num) {
         currentTask = task2;
         document.querySelector("#textInput1").value = "";
         document.querySelector("#textInput2").value = "";
-        jsConsole.writeLine("=== Задание 2: Сравнение символьных массивов ===");
-        jsConsole.writeLine("Введите два массива символов и нажмите 'Сравнить массивы'");
     } else if (num === 3) {
         document.querySelector("#inputArea").style.display = "flex";
         document.querySelector("#inputTask2").style.display = "none";
         document.querySelector("#inputTask3").style.display = "flex";
         currentTask = task3;
         document.querySelector("#textInputArray").value = "";
-        jsConsole.writeLine("=== Задание 3: Максимальная последовательность ===");
-        jsConsole.writeLine("Введите массив чисел через запятую и нажмите 'Выполнить'");
     } else if (num === 4) {
         document.querySelector("#inputArea").style.display = "flex";
         document.querySelector("#inputTask2").style.display = "none";
         document.querySelector("#inputTask3").style.display = "flex";
         currentTask = task4;
         document.querySelector("#textInputArray").value = "";
-        jsConsole.writeLine("=== Задание 4: Наиболее частое число ===");
-        jsConsole.writeLine("Введите массив чисел через запятую и нажмите 'Выполнить'");
     }
 }
 
