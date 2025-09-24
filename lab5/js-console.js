@@ -60,12 +60,6 @@ document.querySelector("#runBtn").addEventListener("click", function () {
     else jsConsole.writeLine("Сначала выберите задание.");
 });
 
-document.querySelector("#textInput").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-        if (currentTask) currentTask();
-        else jsConsole.writeLine("Сначала выберите задание.");
-    }
-});
 
 function loadTask(num) {
     if (!jsConsole) return;

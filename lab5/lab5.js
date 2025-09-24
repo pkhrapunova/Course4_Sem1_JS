@@ -1,27 +1,31 @@
 function task1() {
-    jsConsole.clear();
-    
+    jsConsole.clear();    
     let arr = [];
     for (let i = 0; i < 20; i++) {
         arr[i] = i * 5;
-        jsConsole.writeLine("arr[" + i + "] = " + arr[i]);
+        jsConsole.writeLine(arr[i]);
     }
-    
 }
 
 function task2() {
     jsConsole.clear();
     
-    // Создаем два тестовых массива как на картинке
-    let arr1 = ['h', 'e', 'l', 'l', 'o'];
-    let arr2 = ['h', 'a', 'l', 'l', 'o'];
+    let input1 = document.querySelector("#textInput1").value;
+    let input2 = document.querySelector("#textInput2").value;
+    
+    if (!input1.trim() || !input2.trim()) {
+        jsConsole.writeLine("Ошибка: введите оба массива!");
+        return;
+    }
+    
+    let arr1 = Array.from(input1);
+    let arr2 = Array.from(input2);
     
     jsConsole.writeLine("Первый массив: [" + arr1.join(', ') + "]");
     jsConsole.writeLine("Второй массив: [" + arr2.join(', ') + "]");
     
     let result = "Массивы равны";
     
-    // Сравниваем поэлементно
     for (let i = 0; i < Math.min(arr1.length, arr2.length); i++) {
         if (arr1[i] < arr2[i]) {
             result = "Первый массив лексикографически меньше второго";
@@ -33,7 +37,6 @@ function task2() {
         }
     }
     
-    // Если все элементы равны, но массивы разной длины
     if (result === "Массивы равны" && arr1.length !== arr2.length) {
         result = arr1.length < arr2.length 
             ? "Первый массив лексикографически меньше второго" 
@@ -46,8 +49,19 @@ function task2() {
 function task3() {
     jsConsole.clear();
     
-    // Тестовые данные как на картинке
-    let arr = [2, 1, 1, 2, 3, 3, 2, 2, 2, 1];
+    let input = document.querySelector("#textInputArray").value;
+    
+    if (!input.trim()) {
+        jsConsole.writeLine("Ошибка: введите массив чисел!");
+        return;
+    }
+    
+    let arr = input.split(' ').map(item => parseInt(item.trim()));
+    
+    if (arr.some(isNaN)) {
+        jsConsole.writeLine("Ошибка: введите только числа!");
+        return;
+    }
     
     jsConsole.writeLine("Входной массив: [" + arr.join(", ") + "]");
     
@@ -76,8 +90,19 @@ function task3() {
 function task4() {
     jsConsole.clear();
     
-    // Тестовые данные как на картинке
-    let arr = [4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3];
+    let input = document.querySelector("#textInputArray").value;
+    
+    if (!input.trim()) {
+        jsConsole.writeLine("Ошибка: введите массив чисел!");
+        return;
+    }
+    
+    let arr = input.split(' ').map(item => parseInt(item.trim()));
+    
+    if (arr.some(isNaN)) {
+        jsConsole.writeLine("Ошибка: введите только числа!");
+        return;
+    }
     
     jsConsole.writeLine("Входной массив: [" + arr.join(", ") + "]");
     
@@ -95,14 +120,75 @@ function task4() {
     
     jsConsole.writeLine("Наиболее частое число: " + maxNum);
     jsConsole.writeLine("Количество повторений: " + maxCount + " раз");
-    jsConsole.writeLine("=== Задание завершено ===");
 }
 
+function loadTask(num) {
+    if (!jsConsole) return;
+    jsConsole.clear();
+    
+    document.querySelector("#inputTask2").style.display = "none";
+    document.querySelector("#inputTask3").style.display = "none";
+    document.querySelector("#inputArea").style.display = "none";
 
-// Инициализация
+    if (num === 1) {
+        document.querySelector("#inputArea").style.display = "none";
+        currentTask = task1;
+        task1();
+    } else if (num === 2) {
+        document.querySelector("#inputArea").style.display = "flex";
+        document.querySelector("#inputTask2").style.display = "flex";
+        document.querySelector("#inputTask3").style.display = "none";
+        currentTask = task2;
+        document.querySelector("#textInput1").value = "";
+        document.querySelector("#textInput2").value = "";
+        jsConsole.writeLine("=== Задание 2: Сравнение символьных массивов ===");
+        jsConsole.writeLine("Введите два массива символов и нажмите 'Сравнить массивы'");
+    } else if (num === 3) {
+        document.querySelector("#inputArea").style.display = "flex";
+        document.querySelector("#inputTask2").style.display = "none";
+        document.querySelector("#inputTask3").style.display = "flex";
+        currentTask = task3;
+        document.querySelector("#textInputArray").value = "";
+        jsConsole.writeLine("=== Задание 3: Максимальная последовательность ===");
+        jsConsole.writeLine("Введите массив чисел через запятую и нажмите 'Выполнить'");
+    } else if (num === 4) {
+        document.querySelector("#inputArea").style.display = "flex";
+        document.querySelector("#inputTask2").style.display = "none";
+        document.querySelector("#inputTask3").style.display = "flex";
+        currentTask = task4;
+        document.querySelector("#textInputArray").value = "";
+        jsConsole.writeLine("=== Задание 4: Наиболее частое число ===");
+        jsConsole.writeLine("Введите массив чисел через запятую и нажмите 'Выполнить'");
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#runBtn").addEventListener("click", function() {
         if (currentTask) currentTask();
         else jsConsole.writeLine("Сначала выберите задание.");
+    });
+    
+    document.querySelector("#textInputArray").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            if (currentTask === task3 || currentTask === task4) {
+                currentTask();
+            }
+        }
+    });
+    
+    document.querySelector("#textInput1").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            if (currentTask === task2) {
+                task2();
+            }
+        }
+    });
+    
+    document.querySelector("#textInput2").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            if (currentTask === task2) {
+                task2();
+            }
+        }
     });
 });
