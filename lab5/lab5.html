@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Tasks 5</title>
+    <link rel="stylesheet" href="js-console.css">
+</head>
+
+<body>
+    <div class="menu">
+        <button onclick="loadTask(1)">01-ArraysX5</button>
+        <button onclick="loadTask(2)">02-CompareCharArray</button>
+        <button onclick="loadTask(3)">03-MaximalSequence</button>
+        <button onclick="loadTask(4)">04-MostFrequent</button>
+    </div>
+
+    <div class="console-container">
+        <div id="inputArea" class="input-area" style="display: none;">
+            <!-- Для задания 2 -->
+            <div id="inputTask2" style="display: none; width: 100%;">
+                <input type="text" id="textInput1" placeholder="Введите первый массив (например: hello)">
+                <input type="text" id="textInput2" placeholder="Введите второй массив (например: hallo)">
+                <button onclick="task2()">Сравнить массивы</button>
+            </div>
+            
+            <!-- Для заданий 3 и 4 -->
+            <div id="inputTask3" style="display: none; width: 100%;">
+                <input type="text" id="textInputArray" placeholder="Введите массив чисел через запятую (например: 2,1,1,2,3,3,2,2,2,1)">
+                <button id="runBtn">Выполнить</button>
+            </div>
+        </div>
+        <div id="console" class="js-console"></div>
+    </div>
+
+    <script src="js-console.js"></script>
+    <script src="lab5.js"></script>
+</body>
+
+</html>
