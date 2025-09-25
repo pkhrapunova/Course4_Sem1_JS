@@ -1,13 +1,13 @@
 function task1() {
-    var matrix = getMatrix();
-    var size = matrix.length;
-    var results = [];
+    let matrix = getMatrix();
+    let size = matrix.length;
+    let results = [];
 
-    for (var col = 0; col < size; col++) {
-        var hasEven = false;
-        var product = 1;
-        for (var row = 0; row < size; row++) {
-            var val = matrix[row][col];
+    for (let col = 0; col < size; col++) {
+        let hasEven = false;
+        let product = 1;
+        for (let row = 0; row < size; row++) {
+            let val = matrix[row][col];
             if (val % 2 === 0) hasEven = true;
             product *= val;
         }

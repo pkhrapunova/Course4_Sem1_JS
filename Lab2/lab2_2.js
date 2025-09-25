@@ -1,11 +1,11 @@
 function task2() {
-    var matrix = getMatrix();
-    var size = matrix.length;
-    var results = [];
-    for (var row = 0; row < size; row++) {
-        var hasZero = matrix[row].includes(0);
+    let matrix = getMatrix();
+    let size = matrix.length;
+    let results = [];
+    for (let row = 0; row < size; row++) {
+        let hasZero = matrix[row].includes(0);
         if (hasZero) {
-            var negativeCount = matrix[row].filter(x => x < 0).length;
+            let negativeCount = matrix[row].filter(x => x < 0).length;
             results.push(`Строка ${row+1}: отрицательных элементов = ${negativeCount}`);
         }
     }
