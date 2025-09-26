@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS лаба 8</title>
+    <link rel="stylesheet" href="js-console.css">
+</head>
+
+<body>
+
+    <div class="menu">
+        <button onclick="loadTask(1)">1. Function Declaration Statement</button>
+        <button onclick="loadTask(2)">2. Function Definition Expression</button>
+        <button onclick="loadTask(3)">3. Anonymous Function</button>
+        <button onclick="loadTask(4)">4. Последовательность Фибоначчи</button>
+    </div>
+
+    <div class="console-container">
+        <div id="inputArea" class="input-area" style="display: none;">
+
+            <div id="inputTask1" style="display: none; width: 100%;">
+                <input type="text" id="input1Task1" placeholder="Введите a">
+                <input type="text" id="input2Task1" placeholder="Введите b">
+            </div>
+
+            <div id="inputTask2" style="display: none; width: 100%;">
+                <input type="text" id="textInput1" placeholder="Введите a (например: abc)">
+                <input type="text" id="textInput2" placeholder="Введите b (например: abc)">
+            </div>
+
+            <div id="inputTask3" style="display: none; width: 100%;">
+            </div>
+
+            <div id="inputTask4" style="display: none; width: 100%;">
+                <input type="number" id="fibInput" placeholder="Введите номер n числа Фибоначчи">
+            </div>
+
+        </div>
+
+        <button id="runBtn" style="display: none;">Выполнить</button>
+
+        <div id="console" class="js-console"></div>
+    </div>
+
+    <script src="js-console.js"></script>
+    <script src="lab8.js"></script>
+</body>
+
+</html>
