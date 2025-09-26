@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>JS лаба 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>1. Выбор вложенных div</h2>
+    <div>Внешний div</div>
+    <div>
+        <div class="nested">Вложенный div 1</div>
+        <div class="nested">Вложенный div 2</div>
+    </div>
+    <div>Внешний div</div>
+    <div>Внешний div</div>
+    <div>
+        <div class="nested">Вложенный div 1</div>
+        <div class="nested">Вложенный div 2</div>
+    </div>
+    <div>Внешний div</div>
+    <button onclick="selectNestedDivsQuerySelector()">Выбрать через querySelector</button>
+    <button onclick="selectNestedDivsGetElements()">Выбрать через getElementsByTagName</button>
+
+    <hr>
+
+    <h2>2. Получение значения</h2>
+    <input type="text" id="textInput" placeholder="Введите текст">
+    <button onclick="logInputValue()">Вывести значение</button>
+
+    <hr>
+
+    <h2>3. Изменение фона</h2>
+    <input type="color" id="colorPicker">
+    <button onclick="changeBodyColor()">Изменить фон</button>
+
+    <script src="lab7.js"></script>
+</body>
+</html>
