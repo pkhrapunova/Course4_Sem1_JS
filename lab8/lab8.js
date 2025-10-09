@@ -73,8 +73,6 @@ function loadTask(taskNumber) {
     }
 }
 
-
-
 document.getElementById("runBtn").addEventListener("click", function () {
     if (currentTask) currentTask();
     else jsConsole.writeLine("Сначала выберите задание.");
